@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Home - UMatter{% endblock %}
+{% block content %}
+  <section class="hero">
+    <img src="{% static 'images/hero.jpg' %}" alt="UMatter hero" class="hero-img">
+    <div class="hero-content">
+      <h1>Welcome to UMatter</h1>
+      <p>Your mental health companion — assessment, self-care tips and progress tracking in one place.</p>
+      <div class="cta">
+        <a class="btn" href="/trauma-assessment/">Start Assessment</a>
+        <a class="btn ghost" href="/selfcare/">Selfcare Tips</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="card">
+      <img src="{% static 'images/trauma.jpg' %}" alt="Trauma">
+      <h3>Trauma Assessment</h3>
+      <p>Short, guided questionnaire to help identify areas of concern.</p>
+      <a href="/trauma-assessment/" class="card-link">Open</a>
+    </article>
+
+    <article class="card">
+      <img src="{% static 'images/selfcare.jpg' %}" alt="Selfcare">
+      <h3>Selfcare Tips</h3>
+      <p>Practical tips to help you manage day-to-day wellbeing.</p>
+      <a href="/selfcare/" class="card-link">Explore</a>
+    </article>
+
+    <article class="card">
+      <img src="{% static 'images/tracker.jpg' %}" alt="Progress">
+      <h3>Progress Tracker</h3>
+      <p>Track your mood and progress with simple visual tools.</p>
+      <a href="/progress/" class="card-link">Track</a>
+    </article>
+  </section>
+{% endblock %}

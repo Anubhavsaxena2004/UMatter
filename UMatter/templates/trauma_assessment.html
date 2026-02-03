@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Trauma Assessment - UMatter{% endblock %}
+{% block content %}
+  <h2>Trauma Assessment</h2>
+  <p>Answer the quick questions below — this is not a diagnosis, just a way to track symptoms.</p>
+
+  <form class="assessment-form" method="post" action="/trauma-assessment/submit/">
+    {% csrf_token %}
+    <ol>
+      <li>
+        <label>1. Over the past two weeks, how often have you had trouble sleeping?</label>
+        <div class="radios">
+          <label><input type="radio" name="sleep" value="0"> Not at all</label>
+          <label><input type="radio" name="sleep" value="1"> Several days</label>
+          <label><input type="radio" name="sleep" value="2"> More than half the days</label>
+          <label><input type="radio" name="sleep" value="3"> Nearly every day</label>
+        </div>
+      </li>
+
+      <li>
+        <label>2. Do you experience flashbacks or intrusive memories about a traumatic event?</label>
+        <div class="radios">
+          <label><input type="radio" name="flashbacks" value="0"> No</label>
+          <label><input type="radio" name="flashbacks" value="1"> Rarely</label>
+          <label><input type="radio" name="flashbacks" value="2"> Sometimes</label>
+          <label><input type="radio" name="flashbacks" value="3"> Often</label>
+        </div>
+      </li>
+
+      <li>
+        <label>3. How would you rate your day-to-day mood recently?</label>
+        <div class="radios">
+          <label><input type="radio" name="mood" value="0"> Great</label>
+          <label><input type="radio" name="mood" value="1"> Okay</label>
+          <label><input type="radio" name="mood" value="2"> Low</label>
+          <label><input type="radio" name="mood" value="3"> Very low</label>
+        </div>
+      </li>
+    </ol>
+
+    <div class="form-actions">
+      <button class="btn" type="submit">Submit</button>
+      <a class="btn ghost" href="/">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

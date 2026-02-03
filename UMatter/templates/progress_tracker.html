@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Progress Tracker - UMatter{% endblock %}
+{% block content %}
+  <h2>Progress Tracker</h2>
+  <p>Track daily values and watch your progress over time.</p>
+
+  <section class="tracker">
+    <label>Sleep quality</label>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="bar-sleep"></div></div>
+    </div>
+    <input type="range" min="0" max="100" value="30" data-for="sleep" class="progress-input">
+
+    <label>Mood</label>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="bar-mood"></div></div>
+    </div>
+    <input type="range" min="0" max="100" value="50" data-for="mood" class="progress-input">
+
+    <label>Energy</label>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="bar-energy"></div></div>
+    </div>
+    <input type="range" min="0" max="100" value="40" data-for="energy" class="progress-input">
+
+    <p class="muted">Tip: Use the sliders and click "Save" to store values in your account later.</p>
+    <div class="form-actions"><button class="btn">Save</button></div>
+  </section>
+{% endblock %}

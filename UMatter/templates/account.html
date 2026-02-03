@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Account - UMatter{% endblock %}
+{% block content %}
+  <h2>Account</h2>
+  <div class="account-card">
+    <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar">
+    <div class="account-info">
+      <h3>{{ user.get_full_name|default:user.username }}</h3>
+      <p>{{ user.email }}</p>
+      <a class="btn" href="/account/edit/">Edit Profile</a>
+    </div>
+  </div>
+{% endblock %}
