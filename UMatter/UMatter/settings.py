@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ScoringScoring',
+    'accounts',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'precautions',
+    'virasat',
+    'testt',
 ]
 
 MIDDLEWARE = [
