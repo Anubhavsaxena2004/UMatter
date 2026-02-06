@@ -1,46 +1,246 @@
 {% extends 'base.html' %}
-{% block title %}Trauma Assessment - UMatter{% endblock %}
+{% load static %}
+
+{% block title %}UMatter - Trauma Assessment{% endblock %}
+
 {% block content %}
-  <h2>Trauma Assessment</h2>
-  <p>Answer the quick questions below — this is not a diagnosis, just a way to track symptoms.</p>
+<div class="assessment-container">
+    <h1 class="text-center mb-2">Trauma Assessment</h1>
+    <p class="text-center mb-4" style="color: var(--color-text-muted);">Please answer honestly. There are no right or
+        wrong answers.</p>
 
-  <form class="assessment-form" method="post" action="/trauma-assessment/submit/">
-    {% csrf_token %}
-    <ol>
-      <li>
-        <label>1. Over the past two weeks, how often have you had trouble sleeping?</label>
-        <div class="radios">
-          <label><input type="radio" name="sleep" value="0"> Not at all</label>
-          <label><input type="radio" name="sleep" value="1"> Several days</label>
-          <label><input type="radio" name="sleep" value="2"> More than half the days</label>
-          <label><input type="radio" name="sleep" value="3"> Nearly every day</label>
-        </div>
-      </li>
-
-      <li>
-        <label>2. Do you experience flashbacks or intrusive memories about a traumatic event?</label>
-        <div class="radios">
-          <label><input type="radio" name="flashbacks" value="0"> No</label>
-          <label><input type="radio" name="flashbacks" value="1"> Rarely</label>
-          <label><input type="radio" name="flashbacks" value="2"> Sometimes</label>
-          <label><input type="radio" name="flashbacks" value="3"> Often</label>
-        </div>
-      </li>
-
-      <li>
-        <label>3. How would you rate your day-to-day mood recently?</label>
-        <div class="radios">
-          <label><input type="radio" name="mood" value="0"> Great</label>
-          <label><input type="radio" name="mood" value="1"> Okay</label>
-          <label><input type="radio" name="mood" value="2"> Low</label>
-          <label><input type="radio" name="mood" value="3"> Very low</label>
-        </div>
-      </li>
-    </ol>
-
-    <div class="form-actions">
-      <button class="btn" type="submit">Submit</button>
-      <a class="btn ghost" href="/">Cancel</a>
+    <!-- Loading State -->
+    <div id="loadingState" class="text-center" style="padding: 4rem 0;">
+        <div class="loading" style="margin: 0 auto 1rem;"></div>
+        <p style="color: var(--color-text-muted);">Loading your personalized assessment...</p>
     </div>
-  </form>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container" id="progressContainer" style="display: none;">
+        <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+    </div>
+
+    <!-- Question Card (Dynamic) -->
+    <div class="card question-card" id="questionCard" style="display: none;">
+        <span class="mb-2" style="color: var(--color-primary); font-weight: 600; display: block;">Question <span
+                id="qIndex">1</span> of <span id="qTotal">15</span></span>
+        <h3 id="questionText" class="mb-4"></h3>
+
+        <div class="likert-scale" id="optionsContainer">
+            <!-- Options will be dynamically generated -->
+        </div>
+
+        <div class="mt-4" style="display: flex; justify-content: space-between;">
+            <button class="btn btn-secondary" onclick="prevQuestion()" id="prevBtn" disabled>Previous</button>
+            <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <!-- Result Section (Hidden by default) -->
+    <div class="card text-center" id="resultCard" style="display: none;">
+        <div
+            style="width: 80px; height: 80px; background: var(--gradient-heritage-vikas); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+            <svg class="icon" width="40" height="40">
+                <use href="#icon-heart"></use>
+            </svg>
+        </div>
+        <h2 class="mb-2">Your Assessment is Complete</h2>
+        <p class="mb-4">Based on your responses, we've identified areas where you might need support.</p>
+
+        <div id="resultsContainer"></div>
+
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'selfcare' %}'">View Recovery
+            Plan</button>
+    </div>
+</div>
+
+<script>
+    let questions = [];
+    let currentStep = 0;
+    let responses = [];
+    const optionLabels = ['A', 'B', 'C', 'D'];
+
+    // Get CSRF token for Django
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    // Fetch questions from backend
+    async function fetchQuestions() {
+        try {
+            const response = await fetch('/api/questions/');
+            const data = await response.json();
+            questions = data.questions;
+            responses = new Array(questions.length).fill(null);
+
+            // Hide loading, show assessment
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('questionCard').style.display = 'block';
+
+            document.getElementById('qTotal').innerText = questions.length;
+            loadQuestion();
+        } catch (error) {
+            console.error('Error fetching questions:', error);
+            document.getElementById('loadingState').innerHTML = `
+                <p style="color: var(--color-error);">Failed to load assessment. Please refresh the page.</p>
+            `;
+        }
+    }
+
+    function loadQuestion() {
+        const q = questions[currentStep];
+        document.getElementById('questionText').innerText = q.text;
+        document.getElementById('qIndex').innerText = currentStep + 1;
+
+        // Generate option buttons
+        const optionsContainer = document.getElementById('optionsContainer');
+        optionsContainer.innerHTML = '';
+
+        q.options.forEach((option, index) => {
+            const optionDiv = document.createElement('label');
+            optionDiv.className = 'likert-option';
+            optionDiv.innerHTML = `
+                <input type="radio" name="answer" value="${optionLabels[index]}" hidden>
+                <div class="likert-btn ${responses[currentStep] === optionLabels[index] ? 'selected' : ''}" 
+                     onclick="selectOption(this, '${optionLabels[index]}')">${option}</div>
+            `;
+            optionsContainer.appendChild(optionDiv);
+        });
+
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const progress = ((currentStep + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('prevBtn').disabled = currentStep === 0;
+        document.getElementById('nextBtn').innerText = currentStep === questions.length - 1 ? 'Finish' : 'Next';
+    }
+
+    function selectOption(el, value) {
+        document.querySelectorAll('.likert-btn').forEach(btn => btn.classList.remove('selected'));
+        el.classList.add('selected');
+        responses[currentStep] = value;
+    }
+
+    function nextQuestion() {
+        if (responses[currentStep] === null) {
+            alert('Please select an answer before continuing.');
+            return;
+        }
+
+        if (currentStep < questions.length - 1) {
+            currentStep++;
+            loadQuestion();
+        } else {
+            submitAssessment();
+        }
+    }
+
+    function prevQuestion() {
+        if (currentStep > 0) {
+            currentStep--;
+            loadQuestion();
+        }
+    }
+
+    async function submitAssessment() {
+        // Show loading
+        document.getElementById('questionCard').innerHTML = `
+            <div class="text-center" style="padding: 2rem;">
+                <div class="loading" style="margin: 0 auto 1rem;"></div>
+                <p style="color: var(--color-text-muted);">Analyzing your responses...</p>
+            </div>
+        `;
+
+        // Prepare payload
+        const payload = {
+            responses: questions.map((q, i) => ({
+                id: q.id,
+                answer: responses[i]
+            }))
+        };
+
+        try {
+            const response = await fetch('/api/evaluate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            displayResults(data);
+        } catch (error) {
+            console.error('Error submitting assessment:', error);
+            document.getElementById('questionCard').innerHTML = `
+                <p style="color: var(--color-error);">Failed to process assessment. Please try again.</p>
+            `;
+        }
+    }
+
+    function displayResults(data) {
+        const categoryNames = {
+            Family: 'Family Trauma',
+            Financial: 'Financial Stress',
+            Career: 'Career Anxiety',
+            Love: 'Relationship Trauma'
+        };
+
+        const recommendations = {
+            Family: 'Consider family therapy or setting healthy boundaries. Practice self-compassion and remember that healing takes time.',
+            Financial: 'Start with small budgeting steps and seek financial counseling. Remember that your worth is not defined by your finances.',
+            Career: 'Explore work-life balance strategies and consider career counseling. Your well-being is more important than any job.',
+            Love: 'Focus on building trust gradually and consider relationship counseling. Practice self-love and healthy communication.'
+        };
+
+        // Sort predictions by probability
+        const sortedPredictions = Object.entries(data.prediction).sort((a, b) => b[1] - a[1]);
+        const primary = sortedPredictions[0];
+        const secondary = sortedPredictions[1];
+
+        let resultsHTML = `
+            <div style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: left; border-left: 4px solid var(--color-primary);">
+                <h4 style="color: var(--color-primary);">Primary Focus: ${categoryNames[primary[0]]}</h4>
+                <p style="margin-bottom: 0.5rem;"><strong>Confidence:</strong> ${(primary[1] * 100).toFixed(1)}%</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Average Score:</strong> ${data.features[primary[0]].toFixed(2)} / 3.0</p>
+                <p>${recommendations[primary[0]]}</p>
+            </div>
+        `;
+
+        if (secondary[1] > 0.2) {
+            resultsHTML += `
+                <div style="background: rgba(255, 153, 51, 0.05); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem; text-align: left; border-left: 4px solid var(--color-secondary);">
+                    <h4 style="color: var(--color-secondary);">Secondary Focus: ${categoryNames[secondary[0]]}</h4>
+                    <p style="margin-bottom: 0.5rem;"><strong>Confidence:</strong> ${(secondary[1] * 100).toFixed(1)}%</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Average Score:</strong> ${data.features[secondary[0]].toFixed(2)} / 3.0</p>
+                    <p>${recommendations[secondary[0]]}</p>
+                </div>
+            `;
+        }
+
+        document.getElementById('resultsContainer').innerHTML = resultsHTML;
+        document.getElementById('questionCard').style.display = 'none';
+        document.getElementById('resultCard').style.display = 'block';
+        document.getElementById('progressContainer').style.display = 'none';
+    }
+
+    // Initialize on load
+    fetchQuestions();
+</script>
 {% endblock %}

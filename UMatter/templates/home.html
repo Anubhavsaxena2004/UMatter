@@ -1,38 +1,83 @@
 {% extends 'base.html' %}
-{% block title %}Home - UMatter{% endblock %}
+{% load static %}
+
+{% block title %}UMatter - Home{% endblock %}
+
 {% block content %}
-  <section class="hero">
-    <img src="{% static 'images/hero.jpg' %}" alt="UMatter hero" class="hero-img">
-    <div class="hero-content">
-      <h1>Welcome to UMatter</h1>
-      <p>Your mental health companion — assessment, self-care tips and progress tracking in one place.</p>
-      <div class="cta">
-        <a class="btn" href="/trauma-assessment/">Start Assessment</a>
-        <a class="btn ghost" href="/selfcare/">Selfcare Tips</a>
-      </div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content container">
+    <h1 class="hero-title">From Awareness to Healing</h1>
+    <p class="hero-subtitle">Your safe space to understand stress, overcome trauma, and build emotional resilience.
+      Virasat se Vikas tak - From Heritage to Development.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="{% url 'trauma_assessment' %}" class="btn btn-primary">Start Trauma Assessment</a>
+      <a href="{% url 'selfcare' %}" class="btn btn-secondary">Explore Self-Care</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cards">
-    <article class="card">
-      <img src="{% static 'images/trauma.jpg' %}" alt="Trauma">
-      <h3>Trauma Assessment</h3>
-      <p>Short, guided questionnaire to help identify areas of concern.</p>
-      <a href="/trauma-assessment/" class="card-link">Open</a>
-    </article>
+<!-- Features Section -->
+<section class="container mb-5">
+  <h2 class="text-center mb-4">How We Support You</h2>
+  <div class="features-grid">
+    <!-- Card 1 -->
+    <div class="card feature-card">
+      <div class="feature-icon">
+        <svg class="icon" width="32" height="32">
+          <use href="#icon-activity"></use>
+        </svg>
+      </div>
+      <h3>AI-Powered Assessment</h3>
+      <p style="color: var(--color-text-body);">Identify emotional triggers and trauma types with our ML-powered
+        questionnaire that adapts to you.</p>
+    </div>
 
-    <article class="card">
-      <img src="{% static 'images/selfcare.jpg' %}" alt="Selfcare">
-      <h3>Selfcare Tips</h3>
-      <p>Practical tips to help you manage day-to-day wellbeing.</p>
-      <a href="/selfcare/" class="card-link">Explore</a>
-    </article>
+    <!-- Card 2 -->
+    <div class="card feature-card">
+      <div class="feature-icon">
+        <svg class="icon" width="32" height="32">
+          <use href="#icon-sun"></use>
+        </svg>
+      </div>
+      <h3>Self-Care Tips</h3>
+      <p style="color: var(--color-text-body);">Discover personalized healing strategies, grounding techniques, and
+        wellness routines.</p>
+    </div>
 
-    <article class="card">
-      <img src="{% static 'images/tracker.jpg' %}" alt="Progress">
-      <h3>Progress Tracker</h3>
-      <p>Track your mood and progress with simple visual tools.</p>
-      <a href="/progress/" class="card-link">Track</a>
-    </article>
-  </section>
+    <!-- Card 3 -->
+    <div class="card feature-card">
+      <div class="feature-icon">
+        <svg class="icon" width="32" height="32">
+          <use href="#icon-bar-chart"></use>
+        </svg>
+      </div>
+      <h3>Track Progress</h3>
+      <p style="color: var(--color-text-body);">Monitor your emotional health journey with private, encouraging progress
+        visualizations.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card feature-card">
+      <div class="feature-icon">
+        <svg class="icon" width="32" height="32">
+          <use href="#icon-shield"></use>
+        </svg>
+      </div>
+      <h3>Safe & Private</h3>
+      <p style="color: var(--color-text-body);">Your data is secure. Use our anonymous mode or create a private profile.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="container text-center mb-5">
+  <div class="card" style="background: var(--gradient-hero);">
+    <h2 class="mb-2">Ready to take the first step?</h2>
+    <p class="mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">Remember, healing is a journey, not
+      a destination. We are here to walk with you from heritage to development.</p>
+    <a href="{% url 'trauma_assessment' %}" class="btn btn-primary">Begin Your Journey</a>
+  </div>
+</section>
 {% endblock %}

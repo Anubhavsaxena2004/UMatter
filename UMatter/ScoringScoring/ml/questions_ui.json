@@ -1,0 +1,1226 @@
+{
+  "title": "Mental Wellness App – MCQ Based Trauma Assessment",
+  "total_questions": 120,
+  "sections": [
+    {
+      "name": "Family Trauma",
+      "questions": [
+        {
+          "number": 1,
+          "text": "How often do family conflicts affect your mood?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 2,
+          "text": "Do you feel emotionally supported by your family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 3,
+          "text": "How comfortable are you expressing feelings at home?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 4,
+          "text": "Do family expectations cause you stress?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 5,
+          "text": "Did you feel emotionally neglected growing up?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 6,
+          "text": "How often do family arguments affect your peace?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 7,
+          "text": "Do you feel judged by your family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 8,
+          "text": "Do you avoid family gatherings due to stress?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 9,
+          "text": "Did family criticism affect your confidence?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 10,
+          "text": "Do you feel responsible for family problems?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 11,
+          "text": "How safe do you feel emotionally with family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 12,
+          "text": "Do family issues disturb your sleep?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 13,
+          "text": "Did parental pressure affect your choices?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 14,
+          "text": "Do you feel unheard in your family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 15,
+          "text": "Do family memories trigger sadness?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 16,
+          "text": "Did family problems affect your self- esteem?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 17,
+          "text": "Do you feel emotionally distant from family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 18,
+          "text": "Did family responsibilities burden you early?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 19,
+          "text": "Do you fear conflict with family members?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 20,
+          "text": "Do family issues affect your mental health?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 21,
+          "text": "Did family instability affect your childhood?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 22,
+          "text": "Do you feel emotionally exhausted by family matters?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 23,
+          "text": "Do you feel controlled by family decisions?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 24,
+          "text": "Did family criticism affect your career/love life?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 25,
+          "text": "Do you feel lonely despite having family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 26,
+          "text": "Do family expectations overwhelm you?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 27,
+          "text": "Did family trauma affect your emotional stability?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 28,
+          "text": "Do you fear disappointing your family?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 29,
+          "text": "Do family interactions make you anxious?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 30,
+          "text": "Overall, how impactful is family trauma on your life?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Financial Trauma",
+      "questions": [
+        {
+          "number": 31,
+          "text": "How often do you worry about money?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 32,
+          "text": "Do financial concerns disturb your sleep?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 33,
+          "text": "Did financial hardship affect your childhood?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 34,
+          "text": "Do money issues affect your self- worth?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 35,
+          "text": "Do you feel anxious checking your bank balance?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 36,
+          "text": "Do you avoid spending due to fear?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 37,
+          "text": "Did debt cause emotional stress?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 38,
+          "text": "Do you compare your finances with others?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 39,
+          "text": "Do financial problems affect relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 40,
+          "text": "Do you feel insecure about your income?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 41,
+          "text": "Do you fear unexpected expenses?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 42,
+          "text": "Did money stress affect your mental health?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 43,
+          "text": "Do you feel pressure to earn more constantly?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 44,
+          "text": "Do you avoid financial planning due to anxiety?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 45,
+          "text": "Do money problems affect your peace daily?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 46,
+          "text": "Did financial instability affect your education/career?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 47,
+          "text": "Do you fear job loss due to money needs?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 48,
+          "text": "Do you feel ashamed of your financial status?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 49,
+          "text": "Do you feel trapped due to financial issues?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 50,
+          "text": "Do financial worries reduce your happiness?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 51,
+          "text": "Do you feel burdened by financial responsibilities?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 52,
+          "text": "Did money stress affect your confidence?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 53,
+          "text": "Do financial fears limit your goals?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 54,
+          "text": "Do you avoid discussing money with others?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 55,
+          "text": "Do financial problems cause emotional exhaustion?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 56,
+          "text": "Did financial trauma affect your lifestyle choices?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 57,
+          "text": "Do you feel constant financial pressure?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 58,
+          "text": "Do money concerns affect your mental peace?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 59,
+          "text": "Do you fear future financial instability?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 60,
+          "text": "Overall, how impactful is financial trauma in your life?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Career Trauma",
+      "questions": [
+        {
+          "number": 61,
+          "text": "Do you feel anxious about your career future?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 62,
+          "text": "Did job rejection affect your confidence?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 63,
+          "text": "Do you feel stuck professionally?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 64,
+          "text": "Do you experience workplace stress daily?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 65,
+          "text": "Do you fear professional failure?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 66,
+          "text": "Did career setbacks affect your mental health?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 67,
+          "text": "Do you feel undervalued at work?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 68,
+          "text": "Do you experience imposter syndrome?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 69,
+          "text": "Did academic pressure cause long- term stress?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 70,
+          "text": "Do career worries disturb your sleep?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 71,
+          "text": "Do you fear interviews or evaluations?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 72,
+          "text": "Did workplace conflict affect you emotionally?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 73,
+          "text": "Do you feel career burnout?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 74,
+          "text": "Do you fear switching careers?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 75,
+          "text": "Did career pressure affect relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 76,
+          "text": "Do you feel hopeless about career growth?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 77,
+          "text": "Did failure affect your motivation?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 78,
+          "text": "Do you feel anxious at work daily?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 79,
+          "text": "Did parental expectations affect career choices?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 80,
+          "text": "Do you feel emotionally drained due to work?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 81,
+          "text": "Do career fears reduce your confidence?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 82,
+          "text": "Did toxic work culture affect you?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 83,
+          "text": "Do you feel pressure to succeed constantly?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 84,
+          "text": "Do career issues affect your mental peace?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 85,
+          "text": "Do you feel career regret?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 86,
+          "text": "Did career trauma affect productivity?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 87,
+          "text": "Do you feel uncertain about career future?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 88,
+          "text": "Do career worries affect daily happiness?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 89,
+          "text": "Did career stress affect self- worth?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 90,
+          "text": "Overall, how impactful is career trauma on your life?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Love / Relationship Trauma",
+      "questions": [
+        {
+          "number": 91,
+          "text": "Did heartbreak affect your emotional health?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 92,
+          "text": "Do you fear trusting romantic partners?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 93,
+          "text": "Did a breakup affect your self- esteem?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 94,
+          "text": "Do you feel anxious in relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 95,
+          "text": "Did betrayal affect your trust deeply?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 96,
+          "text": "Do you fear abandonment?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 97,
+          "text": "Did toxic relationships affect mental health?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 98,
+          "text": "Do you avoid relationships due to fear?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 99,
+          "text": "Did love trauma affect sleep?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 100,
+          "text": "Do you feel unworthy of love?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 101,
+          "text": "Did emotional neglect affect you?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 102,
+          "text": "Do you fear emotional attachment?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 103,
+          "text": "Did cheating trauma hurt deeply?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 104,
+          "text": "Do you feel emotionally guarded?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 105,
+          "text": "Did love trauma affect confidence?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 106,
+          "text": "Do you feel lonely after relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 107,
+          "text": "Do relationship conflicts cause anxiety?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 108,
+          "text": "Did emotional abuse affect you?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 109,
+          "text": "Do you fear commitment?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 110,
+          "text": "Did love disappointment affect motivation?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 111,
+          "text": "Do you feel anxious about romantic future?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 112,
+          "text": "Did trust issues affect relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 113,
+          "text": "Do you feel emotionally overwhelmed in love?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 114,
+          "text": "Did love trauma affect daily happiness?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 115,
+          "text": "Do you fear being emotionally hurt again?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 116,
+          "text": "Did heartbreak affect your self- image?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 117,
+          "text": "Do you struggle to move on emotionally?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 118,
+          "text": "Did love trauma affect personal growth?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 119,
+          "text": "Do you feel emotionally unstable in relationships?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        },
+        {
+          "number": 120,
+          "text": "Overall, how impactful is love trauma on your life?",
+          "options": [
+            "Never / Not at all",
+            "Sometimes / Slightly",
+            "Often / Moderately",
+            "Always / Severely"
+          ]
+        }
+      ]
+    }
+  ]
+}

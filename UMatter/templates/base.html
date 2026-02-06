@@ -1,35 +1,128 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>{% block title %}UMatter{% endblock %}</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <a class="brand" href="/">UMatter</a>
-        <nav class="main-nav">
-          <a href="/">Home</a>
-          <a href="/trauma-assessment/">Trauma Assessment</a>
-          <a href="/selfcare/">Selfcare Tips</a>
-          <a href="/progress/">Progress Tracker</a>
-          <a href="/account/">Account</a>
-        </nav>
-        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
-      </div>
-    </header>
 
-    <main class="container">
-      {% block content %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UMatter - Mental Wellness{% endblock %}</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Google Fonts (Optimized) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Inline SVG Icon Definitions -->
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </symbol>
+            <symbol id="icon-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </symbol>
+            <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </symbol>
+            <symbol id="icon-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+            </symbol>
+            <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </symbol>
+            <symbol id="icon-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2">
+                </path>
+            </symbol>
+            <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </symbol>
+            <symbol id="icon-anchor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="5" r="3"></circle>
+                <line x1="12" y1="22" x2="12" y2="8"></line>
+                <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+            </symbol>
+            <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </symbol>
+        </defs>
+    </svg>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="{% url 'home' %}" class="logo">
+                <svg class="icon" width="24" height="24">
+                    <use href="#icon-heart"></use>
+                </svg>
+                UMatter
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+                </li>
+                <li><a href="{% url 'trauma_assessment' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'trauma_assessment' %}active{% endif %}">Assessment</a>
+                </li>
+                <li><a href="{% url 'selfcare' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'selfcare' %}active{% endif %}">Self
+                        Care</a></li>
+                <li><a href="{% url 'progress' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'progress' %}active{% endif %}">Progress</a>
+                </li>
+                <li><a href="{% url 'account' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'account' %}active{% endif %}">Account</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
     </main>
 
-    <footer class="site-footer">
-      <div class="container">© UMatter - Take care of your mental health</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">UMatter</h4>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">Supporting your journey from awareness to
+                    healing.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Emergency Support</a>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 2rem; color: var(--color-text-muted); font-size: 0.8rem;">
+            &copy; {% now "Y" %} UMatter. Mental wellness is a priority.
+        </div>
     </footer>
 
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
+    {% block scripts %}{% endblock %}
+</body>
+
 </html>

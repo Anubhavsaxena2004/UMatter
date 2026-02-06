@@ -1,13 +1,70 @@
 {% extends 'base.html' %}
-{% block title %}Account - UMatter{% endblock %}
+{% load static %}
+
+{% block title %}UMatter - Account{% endblock %}
+
 {% block content %}
-  <h2>Account</h2>
-  <div class="account-card">
-    <img src="{% static 'images/avatar.png' %}" alt="avatar" class="avatar">
-    <div class="account-info">
-      <h3>{{ user.get_full_name|default:user.username }}</h3>
-      <p>{{ user.email }}</p>
-      <a class="btn" href="/account/edit/">Edit Profile</a>
+<div class="container" style="padding: 4rem 1.5rem; max-width: 800px;">
+    <!-- Profile Header -->
+    <div class="card mb-4" style="display: flex; align-items: center; gap: 2rem; padding: 2rem;">
+        <div
+            style="width: 100px; height: 100px; background: var(--color-warm-peach); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white;">
+            A
+        </div>
+        <div>
+            <h2 class="mb-1">Anubhav Saxena</h2>
+            <p style="color: var(--color-text-muted);">Member since Feb 2026</p>
+            <span
+                style="background: var(--color-serenity-blue); color: var(--color-primary); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Premium
+                Member</span>
+        </div>
+        <button class="btn btn-secondary" style="margin-left: auto;">Edit Profile</button>
     </div>
-  </div>
+
+    <!-- Settings Grid -->
+    <div style="display: grid; gap: 1.5rem;">
+        <div class="card">
+            <h3 class="mb-3">Privacy & Safety</h3>
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <div>
+                    <h5 class="mb-1">Anonymous Mode</h5>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">Hide your name from public
+                        leaderboards.</p>
+                </div>
+                <div class="toggle-switch"
+                    style="width: 50px; height: 26px; background: var(--color-success); border-radius: 20px; position: relative;">
+                    <div
+                        style="width: 22px; height: 22px; background: white; border-radius: 50%; position: absolute; top: 2px; right: 2px;">
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h5 class="mb-1">Data Visibility</h5>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">Manage who can see your progress.</p>
+                </div>
+                <button class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Manage</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="mb-3">Notifications</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span>Daily Check-in Reminders</span>
+                <span style="color: var(--color-success); font-weight: 600;">On</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Weekly Progress Report</span>
+                <span style="color: var(--color-text-muted);">Off</span>
+            </div>
+        </div>
+
+        <div class="card" style="border: 1px solid var(--color-error);">
+            <h3 class="mb-3" style="color: var(--color-error);">Danger Zone</h3>
+            <p class="mb-3">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="btn" style="background: var(--color-error); color: white;">Delete Account</button>
+        </div>
+    </div>
+</div>
 {% endblock %}
