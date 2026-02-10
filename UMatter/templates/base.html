@@ -9,6 +9,8 @@
 
     <!-- Design System CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animations.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
 
     <!-- Google Fonts (Optimized) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,12 +93,40 @@
                 <li><a href="{% url 'progress' %}"
                         class="nav-link {% if request.resolver_match.url_name == 'progress' %}active{% endif %}">Progress</a>
                 </li>
-                <li><a href="{% url 'account' %}"
-                        class="nav-link {% if request.resolver_match.url_name == 'account' %}active{% endif %}">Account</a>
+
+                {% if user.is_authenticated %}
+                <!-- Authenticated User Links -->
+                <li><a href="{% url 'accounts:profile' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+                        👤 {{ user.first_name|default:user.username }}
+                    </a></li>
+                <li><a href="{% url 'accounts:logout' %}" class="nav-link">Logout</a></li>
+                {% else %}
+                <!-- Guest User Links -->
+                <li><a href="{% url 'accounts:login' %}"
+                        class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
                 </li>
+                <li><a href="{% url 'accounts:signup' %}" class="btn btn-primary"
+                        style="padding: 0.5rem 1.25rem; text-decoration: none;">Sign Up</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
+
+    <!-- Messages Display -->
+    {% if messages %}
+    <div class="container" style="padding-top: 1rem;">
+        {% for message in messages %}
+        <div
+            style="padding: 1rem; margin-bottom: 1rem; background: {% if message.tags == 'error' %}rgba(244, 67, 54, 0.1); border-left: 3px solid var(--color-error);{% elif message.tags == 'success' %}rgba(0, 168, 150, 0.1); border-left: 3px solid var(--color-soft-teal);{% else %}rgba(255, 153, 51, 0.1); border-left: 3px solid var(--color-heritage-saffron);{% endif %} border-radius: var(--radius-sm);">
+            <p
+                style="margin: 0; color: {% if message.tags == 'error' %}var(--color-error);{% elif message.tags == 'success' %}var(--color-soft-teal);{% else %}var(--color-heritage-saffron);{% endif %}">
+                {{ message }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Main Content -->
     <main>
@@ -123,6 +153,12 @@
     </footer>
 
     {% block scripts %}{% endblock %}
+
+    <!-- Anti-Gravity Animation System -->
+    <script src="{% static 'js/animations.js' %}"></script>
+
+    <!-- UMatter Guide Chatbot -->
+    <script src="{% static 'js/chatbot.js' %}"></script>
 </body>
 
 </html>

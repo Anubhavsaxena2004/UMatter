@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}UMatter - Login{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 1.5rem; max-width: 500px;">
+    <div class="card" style="padding: 3rem;">
+        <!-- Logo/Header -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="color: var(--color-heritage-saffron); margin-bottom: 0.5rem;">Welcome Back</h1>
+            <p style="color: var(--color-text-muted);">Continue your healing journey</p>
+        </div>
+
+        <!-- Error Messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <div
+            style="padding: 1rem; margin-bottom: 1.5rem; background: rgba(244, 67, 54, 0.1); border-left: 3px solid var(--color-error); border-radius: var(--radius-sm);">
+            <p style="margin: 0; color: var(--color-error);">{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Login Form -->
+        <form method="post" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+
+            <div style="margin-bottom: 1.5rem;">
+                <label for="username"
+                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                    Username or Email
+                </label>
+                <input type="text" id="username" name="username" required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                    placeholder="Enter your username">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label for="password"
+                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                    Password
+                </label>
+                <input type="password" id="password" name="password" required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                    placeholder="Enter your password">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" name="remember_me" style="cursor: pointer;">
+                    <span style="color: var(--color-text-muted); font-size: 0.9rem;">Remember me</span>
+                </label>
+                <a href="#" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem;">
+                    Forgot password?
+                </a>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; padding: 0.875rem; font-size: 1rem; font-weight: 600;">
+                Sign In
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div style="display: flex; align-items: center; margin: 2rem 0;">
+            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
+            <span style="padding: 0 1rem; color: var(--color-text-muted); font-size: 0.9rem;">or</span>
+            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div style="text-align: center;">
+            <p style="color: var(--color-text-muted); margin-bottom: 0.5rem;">
+                Don't have an account?
+            </p>
+            <a href="{% url 'accounts:signup' %}" class="btn btn-secondary"
+                style="display: inline-block; padding: 0.75rem 2rem; text-decoration: none;">
+                Create Account
+            </a>
+        </div>
+
+        <!-- Test Credentials (Remove in production) -->
+        <div
+            style="margin-top: 2rem; padding: 1rem; background: rgba(0, 168, 150, 0.1); border-radius: var(--radius-sm); border-left: 3px solid var(--color-soft-teal);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: var(--color-text-body); font-size: 0.9rem;">Test
+                Accounts:</p>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">
+                <strong>ananya</strong> / password123 (Student, Financial Stress)<br>
+                <strong>rahul</strong> / password123 (Engineer, Career Burnout)
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

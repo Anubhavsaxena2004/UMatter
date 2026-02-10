@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}UMatter - Sign Up{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 1.5rem; max-width: 600px;">
+    <div class="card" style="padding: 3rem;">
+        <!-- Logo/Header -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="color: var(--color-heritage-saffron); margin-bottom: 0.5rem;">Begin Your Journey</h1>
+            <p style="color: var(--color-text-muted);">From heritage to healing, we're here for you</p>
+        </div>
+
+        <!-- Error Messages -->
+        {% if form.errors %}
+        <div
+            style="padding: 1rem; margin-bottom: 1.5rem; background: rgba(244, 67, 54, 0.1); border-left: 3px solid var(--color-error); border-radius: var(--radius-sm);">
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <p style="margin: 0.25rem 0; color: var(--color-error);">{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Signup Form -->
+        <form method="post" action="{% url 'accounts:signup' %}">
+            {% csrf_token %}
+
+            <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                <div>
+                    <label for="first_name"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        First Name
+                    </label>
+                    <input type="text" id="first_name" name="first_name" required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="Ananya">
+                </div>
+                <div>
+                    <label for="last_name"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Last Name
+                    </label>
+                    <input type="text" id="last_name" name="last_name" required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="Sharma">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label for="username"
+                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                    Username *
+                </label>
+                <input type="text" id="username" name="username" required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                    placeholder="Choose a unique username">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label for="email"
+                    style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                    Email *
+                </label>
+                <input type="email" id="email" name="email" required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                    placeholder="your.email@example.com">
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                <div>
+                    <label for="password1"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Password *
+                    </label>
+                    <input type="password" id="password1" name="password1" required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="••••••••">
+                </div>
+                <div>
+                    <label for="password2"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Confirm Password *
+                    </label>
+                    <input type="password" id="password2" name="password2" required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="••••••••">
+                </div>
+            </div>
+
+            <!-- Optional Profile Information -->
+            <div
+                style="padding: 1.5rem; background: rgba(0, 168, 150, 0.05); border-radius: var(--radius-sm); margin-bottom: 1.5rem;">
+                <h4 style="margin: 0 0 1rem 0; color: var(--color-text-body);">Profile Information (Optional)</h4>
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="age_group"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Age Group
+                    </label>
+                    <select id="age_group" name="age_group"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit; background: white;">
+                        <option value="">Select age group</option>
+                        <option value="18-25">18-25 years</option>
+                        <option value="26-35">26-35 years</option>
+                        <option value="36-45">36-45 years</option>
+                        <option value="46-60">46-60 years</option>
+                        <option value="60+">60+ years</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="occupation"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Occupation
+                    </label>
+                    <input type="text" id="occupation" name="occupation"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="e.g., Student, Engineer, Teacher">
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="location"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Location
+                    </label>
+                    <input type="text" id="location" name="location"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit;"
+                        placeholder="e.g., Delhi, Mumbai, Bengaluru">
+                </div>
+
+                <div>
+                    <label for="preferred_language"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-body);">
+                        Preferred Language
+                    </label>
+                    <select id="preferred_language" name="preferred_language"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit; background: white;">
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Marathi">Marathi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Telugu">Telugu</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: flex; align-items: start; gap: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" name="terms" required style="margin-top: 0.25rem; cursor: pointer;">
+                    <span style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.5;">
+                        I agree to the <a href="#" style="color: var(--color-primary); text-decoration: none;">Terms of
+                            Service</a> and
+                        <a href="#" style="color: var(--color-primary); text-decoration: none;">Privacy Policy</a>.
+                        I understand this platform supports wellness but does not replace professional treatment.
+                    </span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; padding: 0.875rem; font-size: 1rem; font-weight: 600;">
+                Create Account
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div style="display: flex; align-items: center; margin: 2rem 0;">
+            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
+            <span style="padding: 0 1rem; color: var(--color-text-muted); font-size: 0.9rem;">or</span>
+            <div style="flex: 1; height: 1px; background: var(--color-border);"></div>
+        </div>
+
+        <!-- Login Link -->
+        <div style="text-align: center;">
+            <p style="color: var(--color-text-muted); margin-bottom: 0.5rem;">
+                Already have an account?
+            </p>
+            <a href="{% url 'accounts:login' %}" class="btn btn-secondary"
+                style="display: inline-block; padding: 0.75rem 2rem; text-decoration: none;">
+                Sign In
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',  # Core models for UMatter
     'ScoringScoring',
     'accounts',
     # 'crispy_forms',

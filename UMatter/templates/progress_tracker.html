@@ -12,7 +12,7 @@
             <svg class="icon" width="20" height="20" style="color: var(--color-warning);">
                 <use href="#icon-zap"></use>
             </svg>
-            <span style="font-weight: 600;">5 Day Streak!</span>
+            <span style="font-weight: 600;" id="streakText">Loading streak...</span>
         </div>
     </div>
 
@@ -20,76 +20,343 @@
     <div class="card mb-5 text-center">
         <h3>How are you feeling today?</h3>
         <div class="mood-tracker">
-            <button class="mood-btn" onclick="selectMood(this)">😢</button>
-            <button class="mood-btn" onclick="selectMood(this)">😕</button>
-            <button class="mood-btn" onclick="selectMood(this)">😐</button>
-            <button class="mood-btn" onclick="selectMood(this)">🙂</button>
-            <button class="mood-btn" onclick="selectMood(this)">😁</button>
+            <button class="mood-btn" data-mood="1" onclick="selectMood(1, '😢')">😢</button>
+            <button class="mood-btn" data-mood="2" onclick="selectMood(2, '😕')">😕</button>
+            <button class="mood-btn" data-mood="3" onclick="selectMood(3, '😐')">😐</button>
+            <button class="mood-btn" data-mood="4" onclick="selectMood(4, '🙂')">🙂</button>
+            <button class="mood-btn" data-mood="5" onclick="selectMood(5, '😁')">😁</button>
         </div>
         <p id="moodText" style="color: var(--color-text-muted); margin-top: 1rem;">Select a mood to check in.</p>
+
+        <!-- Optional Notes -->
+        <div id="moodNotesSection" style="display: none; margin-top: 1.5rem;">
+            <textarea id="moodNotes" placeholder="How are you feeling? (optional)"
+                style="width: 100%; max-width: 500px; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: inherit; resize: vertical;"
+                rows="3"></textarea>
+            <button class="btn btn-primary mt-3" onclick="saveMood()">Save Mood Entry</button>
+        </div>
     </div>
 
     <!-- Stats Grid -->
     <div class="features-grid">
-        <div class="card">
-            <h4 class="mb-3">Weekly Mood</h4>
-            <!-- Placeholder for Chart -->
-            <div style="height: 150px; display: flex; align-items: flex-end; justify-content: space-between; gap: 5px;">
-                <div
-                    style="width: 12%; height: 40%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px; transition: height 0.3s;">
-                </div>
-                <div
-                    style="width: 12%; height: 60%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px;">
-                </div>
-                <div
-                    style="width: 12%; height: 50%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px;">
-                </div>
-                <div
-                    style="width: 12%; height: 80%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px;">
-                </div>
-                <div
-                    style="width: 12%; height: 70%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px;">
-                </div>
-                <div
-                    style="width: 12%; height: 90%; background: linear-gradient(to top, var(--color-serenity-blue), var(--color-primary)); border-radius: 4px;">
-                </div>
-                <div
-                    style="width: 12%; height: 100%; background: linear-gradient(to top, var(--color-success), var(--color-soft-teal)); border-radius: 4px;">
-                </div>
-            </div>
-            <div
-                style="display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-text-muted);">
-                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+        <!-- Weekly Mood Chart -->
+        <div class="card" style="grid-column: span 2;">
+            <h4 class="mb-3">Weekly Mood Trend</h4>
+            <canvas id="moodChart" style="max-height: 300px;"></canvas>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                <button class="btn btn-secondary btn-sm" onclick="loadMoodData(7)">7 Days</button>
+                <button class="btn btn-primary btn-sm" onclick="loadMoodData(14)">14 Days</button>
+                <button class="btn btn-secondary btn-sm" onclick="loadMoodData(30)">30 Days</button>
             </div>
         </div>
 
+        <!-- Mood Statistics -->
         <div class="card">
-            <h4 class="mb-3">Activities Completed</h4>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Journaling</span>
-                    <span style="font-weight: 600; color: var(--color-primary);">12 Sessions</span>
+            <h4 class="mb-3">Mood Statistics</h4>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--color-text-muted);">Average This Week</span>
+                        <span id="avgMood"
+                            style="font-size: 2rem; font-weight: 600; color: var(--color-primary);">-</span>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Meditation</span>
-                    <span style="font-weight: 600; color: var(--color-primary);">8 Hours</span>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--color-text-muted);">Trend</span>
+                        <span id="trendIndicator" style="font-weight: 600;">-</span>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Breathing</span>
-                    <span style="font-weight: 600; color: var(--color-primary);">24 Times</span>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--color-text-muted);">Best Day</span>
+                        <span id="bestDay" style="font-weight: 600; color: var(--color-success);">-</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--color-text-muted);">Entries Logged</span>
+                        <span id="totalEntries" style="font-weight: 600; color: var(--color-primary);">-</span>
+                    </div>
                 </div>
             </div>
-            <a href="#" class="btn btn-secondary mt-3" style="width: 100%;">View Log</a>
+        </div>
+
+        <!-- Alerts & Insights -->
+        <div class="card">
+            <h4 class="mb-3">Insights & Alerts</h4>
+            <div id="alertsContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+                <p style="color: var(--color-text-muted); font-style: italic;">Loading insights...</p>
+            </div>
         </div>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-    function selectMood(btn) {
-        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('moodText').innerText = "Thanks for checking in!";
-        document.getElementById('moodText').style.color = "var(--color-success)";
+    // Authentication check
+    {% if not user.is_authenticated %}
+    alert('Please login to view your progress tracker.');
+    window.location.href = '{% url "accounts:login" %}?next={{ request.path }}';
+    {% endif %}
+
+    let selectedMoodValue = null;
+    let moodChart = null;
+    // Actual logged-in user ID
+
+    // CSRF Token for POST requests
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
+    const csrftoken = getCookie('csrftoken');
+
+    function selectMood(value, emoji) {
+        selectedMoodValue = value;
+        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`[data-mood="${value}"]`).classList.add('active');
+
+        const moodLabels = {
+            1: 'Very Sad',
+            2: 'Sad',
+            3: 'Neutral',
+            4: 'Happy',
+            5: 'Very Happy'
+        };
+
+        document.getElementById('moodText').innerText = `You selected: ${moodLabels[value]} ${emoji}`;
+        document.getElementById('moodText').style.color = "var(--color-primary)";
+        document.getElementById('moodNotesSection').style.display = 'block';
+    }
+
+    async function saveMood() {
+        if (!selectedMoodValue) {
+            alert('Please select a mood first');
+            return;
+        }
+
+        const notes = document.getElementById('moodNotes').value;
+
+        try {
+            const response = await fetch('/api/v1/mood/log/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    mood_level: selectedMoodValue,
+                    notes: notes
+                })
+            });
+
+            if (response.ok) {
+                document.getElementById('moodText').innerText = "✅ Mood logged successfully!";
+                document.getElementById('moodText').style.color = "var(--color-success)";
+                document.getElementById('moodNotes').value = '';
+                document.getElementById('moodNotesSection').style.display = 'none';
+
+                // Reset mood selection
+                document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+                selectedMoodValue = null;
+
+                // Reload data
+                loadMoodData(14);
+                loadAlerts();
+            } else {
+                const error = await response.json();
+                alert('Error saving mood: ' + (error.error || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Error saving mood:', error);
+            alert('Failed to save mood. Please try again.');
+        }
+    }
+
+    async function loadMoodData(days = 14) {
+        try {
+            const response = await fetch(`/api/v1/mood/history/?user_id=${userId}&days=${days}`);
+            const data = await response.json();
+
+            if (data.history && data.history.length > 0) {
+                updateChart(data.history);
+                updateStatistics(data.history);
+            } else {
+                // Show empty state
+                if (moodChart) {
+                    moodChart.data.labels = [];
+                    moodChart.data.datasets[0].data = [];
+                    moodChart.update();
+                }
+                document.getElementById('avgMood').innerText = '-';
+                document.getElementById('trendIndicator').innerText = 'No data yet';
+                document.getElementById('bestDay').innerText = '-';
+                document.getElementById('totalEntries').innerText = '0';
+            }
+
+            // Update active button
+            document.querySelectorAll('.btn-sm').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-secondary');
+            });
+            event.target.classList.remove('btn-secondary');
+            event.target.classList.add('btn-primary');
+        } catch (error) {
+            console.error('Error loading mood data:', error);
+        }
+    }
+
+    function updateChart(history) {
+        const labels = history.map(entry => {
+            const date = new Date(entry.logged_at);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        });
+        const data = history.map(entry => entry.mood_level);
+
+        const ctx = document.getElementById('moodChart').getContext('2d');
+
+        if (moodChart) {
+            moodChart.data.labels = labels;
+            moodChart.data.datasets[0].data = data;
+            moodChart.update();
+        } else {
+            moodChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Mood Level',
+                        data: data,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function (value) {
+                                    const labels = ['', '😢', '😕', '😐', '🙂', '😁'];
+                                    return labels[value] || value;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const moodLabels = ['', 'Very Sad', 'Sad', 'Neutral', 'Happy', 'Very Happy'];
+                                    return moodLabels[context.parsed.y] || context.parsed.y;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function updateStatistics(history) {
+        // Calculate average mood
+        const sum = history.reduce((acc, entry) => acc + entry.mood_level, 0);
+        const avg = (sum / history.length).toFixed(1);
+        document.getElementById('avgMood').innerText = avg;
+
+        // Calculate trend
+        if (history.length >= 2) {
+            const recent = history.slice(-3).reduce((acc, e) => acc + e.mood_level, 0) / Math.min(3, history.length);
+            const older = history.slice(0, 3).reduce((acc, e) => acc + e.mood_level, 0) / Math.min(3, history.length);
+
+            if (recent > older + 0.5) {
+                document.getElementById('trendIndicator').innerHTML = '📈 Improving';
+                document.getElementById('trendIndicator').style.color = 'var(--color-success)';
+            } else if (recent < older - 0.5) {
+                document.getElementById('trendIndicator').innerHTML = '📉 Declining';
+                document.getElementById('trendIndicator').style.color = 'var(--color-error)';
+            } else {
+                document.getElementById('trendIndicator').innerHTML = '➡️ Stable';
+                document.getElementById('trendIndicator').style.color = 'var(--color-text-muted)';
+            }
+        }
+
+        // Find best day
+        const bestEntry = history.reduce((max, entry) => entry.mood_level > max.mood_level ? entry : max, history[0]);
+        const bestDate = new Date(bestEntry.logged_at);
+        document.getElementById('bestDay').innerText = bestDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        // Total entries
+        document.getElementById('totalEntries').innerText = history.length;
+
+        // Calculate streak
+        let streak = 0;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        for (let i = history.length - 1; i >= 0; i--) {
+            const entryDate = new Date(history[i].logged_at);
+            entryDate.setHours(0, 0, 0, 0);
+            const daysDiff = Math.floor((today - entryDate) / (1000 * 60 * 60 * 24));
+
+            if (daysDiff === streak) {
+                streak++;
+            } else {
+                break;
+            }
+        }
+
+        document.getElementById('streakText').innerText = `${streak} Day Streak!`;
+    }
+
+    async function loadAlerts() {
+        try {
+            const response = await fetch(`/api/v1/alerts/?user_id=${userId}`);
+            const data = await response.json();
+
+            const container = document.getElementById('alertsContainer');
+
+            if (data.alerts && data.alerts.length > 0) {
+                container.innerHTML = data.alerts.map(alert => `
+                    <div style="padding: 1rem; background: ${alert.severity === 'high' ? 'rgba(244, 67, 54, 0.1)' : 'rgba(255, 193, 7, 0.1)'}; border-left: 3px solid ${alert.severity === 'high' ? 'var(--color-error)' : 'var(--color-warning)'}; border-radius: var(--radius-sm);">
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">${alert.title}</div>
+                        <div style="font-size: 0.9rem; color: var(--color-text-muted);">${alert.message}</div>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: var(--color-success); font-style: italic;">✨ All good! Keep up the great work.</p>';
+            }
+        } catch (error) {
+            console.error('Error loading alerts:', error);
+        }
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        loadMoodData(14);
+        loadAlerts();
+    });
 </script>
 {% endblock %}

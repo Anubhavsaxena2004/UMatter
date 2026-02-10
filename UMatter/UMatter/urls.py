@@ -24,7 +24,14 @@ urlpatterns = [
     path('selfcare/', TemplateView.as_view(template_name='selfcare_tips.html'), name='selfcare'),
     path('progress/', TemplateView.as_view(template_name='progress_tracker.html'), name='progress'),
     path('account/', TemplateView.as_view(template_name='account.html'), name='account'),
-    path('api/', include('ScoringScoring.urls')),
+    
+    # API endpoints
+    path('api/', include('ScoringScoring.urls')),  # Legacy endpoints
+    path('api/v1/', include('core.urls')),  # New core API endpoints
+    
+    # Authentication
+    path('accounts/', include('accounts.urls')),
+    
     path('admin/', admin.site.urls),
 ]
 

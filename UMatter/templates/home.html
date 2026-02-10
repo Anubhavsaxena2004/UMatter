@@ -5,25 +5,25 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero scroll-fade">
   <div class="hero-content container">
     <h1 class="hero-title">From Awareness to Healing</h1>
     <p class="hero-subtitle">Your safe space to understand stress, overcome trauma, and build emotional resilience.
       Virasat se Vikas tak - From Heritage to Development.</p>
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="{% url 'trauma_assessment' %}" class="btn btn-primary">Start Trauma Assessment</a>
+      <a href="{% url 'trauma_assessment' %}" class="btn btn-primary glow-on-hover">Start Trauma Assessment</a>
       <a href="{% url 'selfcare' %}" class="btn btn-secondary">Explore Self-Care</a>
     </div>
   </div>
 </section>
 
 <!-- Features Section -->
-<section class="container mb-5">
-  <h2 class="text-center mb-4">How We Support You</h2>
-  <div class="features-grid">
+<section class="container mb-5 section-unfold">
+  <h2 class="text-center mb-4 scroll-reveal">How We Support You</h2>
+  <div class="features-grid scroll-stagger">
     <!-- Card 1 -->
     <div class="card feature-card">
-      <div class="feature-icon">
+      <div class="feature-icon icon-pulse">
         <svg class="icon" width="32" height="32">
           <use href="#icon-activity"></use>
         </svg>
@@ -35,7 +35,7 @@
 
     <!-- Card 2 -->
     <div class="card feature-card">
-      <div class="feature-icon">
+      <div class="feature-icon icon-rotate">
         <svg class="icon" width="32" height="32">
           <use href="#icon-sun"></use>
         </svg>
@@ -47,7 +47,7 @@
 
     <!-- Card 3 -->
     <div class="card feature-card">
-      <div class="feature-icon">
+      <div class="feature-icon icon-pulse">
         <svg class="icon" width="32" height="32">
           <use href="#icon-bar-chart"></use>
         </svg>
@@ -59,7 +59,7 @@
 
     <!-- Card 4 -->
     <div class="card feature-card">
-      <div class="feature-icon">
+      <div class="feature-icon breathe">
         <svg class="icon" width="32" height="32">
           <use href="#icon-shield"></use>
         </svg>
@@ -72,12 +72,12 @@
 </section>
 
 <!-- Call to Action -->
-<section class="container text-center mb-5">
+<section class="container text-center mb-5 scroll-scale">
   <div class="card" style="background: var(--gradient-hero);">
     <h2 class="mb-2">Ready to take the first step?</h2>
     <p class="mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">Remember, healing is a journey, not
       a destination. We are here to walk with you from heritage to development.</p>
-    <a href="{% url 'trauma_assessment' %}" class="btn btn-primary">Begin Your Journey</a>
+    <a href="{% url 'trauma_assessment' %}" class="btn btn-primary glow-on-hover">Begin Your Journey</a>
   </div>
 </section>
 {% endblock %}
